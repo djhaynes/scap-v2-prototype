@@ -90,3 +90,5 @@ Start the Application.
 
 `python3 application.py <application_config in /config>`
 
+## Getting Help
+To get help with the SCAP v2 Prototype or to report an issue. Please open an [issue](https://github.com/opencybersecurityalliance/scap-v2-prototype/issues) or send an email to https://groups.google.com/a/list.nist.gov/g/scap-dev-endpoint.
