@@ -16,8 +16,8 @@ The following commands were used to install and run the OpenDXL Broker. These in
 
 Assuming you are in the /home/user directory, run the following commands.
 
-`mkdir opendxl
- mkdir opendxl\opendxl-broker`
+`mkdir opendxl`
+ `mkdir opendxl\opendxl-broker`
 
 Next, run OpenDXL with the following command. 
 
@@ -36,8 +36,8 @@ First, check the OpenSSL version used by Python.
 
 Then, type the following.
 
-`>>> import ssl
->>> ssl.OPENSSL_VERSION`
+`>>> import ssl`
+`>>> ssl.OPENSSL_VERSION`
 
 Once the OpenSSL version is verified, type the following.
 
