@@ -12,6 +12,7 @@ import os
 import sys
 import json
 
+from builtins import input as prompt
 from dxlclient.callbacks import EventCallback
 from dxlclient.client import DxlClient
 from dxlclient.client_config import DxlClientConfig
@@ -47,7 +48,7 @@ from common import *
 logger = logging.getLogger(__name__)
 
 # Create DXL configuration from file
-config = DxlClientConfig.create_dxl_config_from_file(CONFIG_FILE)
+config = DxlClientConfig.create_dxl_config_from_file(CONFIG)
 
 # Stores the transaction ids of requests made by the application
 transactions = []
@@ -73,7 +74,7 @@ with DxlClient(config) as client:
 
         # Extract and store the transaction id from the acknowledgement message
         if res.message_type != Message.MESSAGE_TYPE_ERROR:
-	    ram = RequestAcknowledgementMessage()
+            ram = RequestAcknowledgementMessage()
             ram.parse(res.payload.decode())
             logger.info("Application received response: %s", ram.to_s())
             transactions.append(ram.transaction_id)
@@ -87,7 +88,7 @@ with DxlClient(config) as client:
         res = client.sync_request(req)
 
         # Parse and return the query results
-	qrm = QueryResultMessage()
+        qrm = QueryResultMessage()
         qrm.parse(res.payload.decode())
         return qrm
             
@@ -120,7 +121,7 @@ with DxlClient(config) as client:
 
         # Run an inventory scan
         if option == "1":
-	    m = InitiateAssessmentMessage("inventory", "*", "<= 3 days", "06-15-2020", "true",
+            m = InitiateAssessmentMessage("inventory", "*", "<= 3 days", "06-15-2020", "true",
 	                             "[{\"pce-id\": \"d481281a-4d09-4564-a5a9-e86b46ad8e50\", \"check-type\": \"oval\"},{\"pce-id\": \"bd476f20-cfa4-4ff5-888a-0ba3a6bbb45d\", \"check-type\": \"oval\"},{\"pce-id\": \"7bc0df90-cdff-4c73-99ab-8539ca43afff\", \"check-type\": \"oval\"}, {\"pce-id\": \"c6048795-2d04-4142-806d-2c1d281c335c\", \"check-type\": \"oval\"}]",
                                      "oval", "full", "", APP_ID)
             request_assessment(m)

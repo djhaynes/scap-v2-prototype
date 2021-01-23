@@ -201,7 +201,7 @@ class CancelAssessmentMessage:
         
     def parse(self, m):
         j = json.loads(m)
-	self.message_type = j["message_type"]
+        self.message_type = j["message_type"]
         self.transaction_id = j["transaction_id"]
         self.requestor_id = j["requestor_id"]
         

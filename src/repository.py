@@ -35,7 +35,7 @@ SERVICE_REPOSITORY_QUERY_TOPIC = "/scap/service/repository/query"
 EVENT_STORE_DATA_TOPIC = "/scap/event/data/store"
 
 # Create DXL configuration from file
-config = DxlClientConfig.create_dxl_config_from_file(CONFIG_FILE)
+config = DxlClientConfig.create_dxl_config_from_file(CONFIG)
 
 # Stores all transactions associated with an application
 app_transactions = {}
@@ -61,7 +61,7 @@ with DxlClient(config) as client:
     def store_request(iam):
         logger.info("Storing request: %s", iam.to_s())
         if iam.requestor_id in app_transactions.keys():
-	    app_transactions[iam.requestor_id].append(iam.transaction_id)
+            app_transactions[iam.requestor_id].append(iam.transaction_id)
         else:
             app_transactions[iam.requestor_id] = [iam.transaction_id]
             

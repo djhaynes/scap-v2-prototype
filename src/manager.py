@@ -51,7 +51,7 @@ EVENT_ASSESSMENT_RESULTS_TOPIC = "/scap/event/assessment/results"
 EVENT_STORE_DATA_TOPIC = "/scap/event/data/store"
 
 # Create DXL configuration from file
-config = DxlClientConfig.create_dxl_config_from_file(CONFIG_FILE)
+config = DxlClientConfig.create_dxl_config_from_file(CONFIG)
 
 # Stores initiate assessment requests for processing
 assessment_requests = []
@@ -122,7 +122,7 @@ with DxlClient(config) as client:
     # because it represents a cancel assessment request
     def get_ids(content):
         ids = ""
-	if content == "inventory":
+        if content == "inventory":
             ids = "1,2,3"
         elif content == "assess":
             ids = "4,5,6"
@@ -309,10 +309,10 @@ with DxlClient(config) as client:
                 
                 targets = transactions_targets[ar.transaction_id]
                 
-                # Query the repository for in scope collectors                                                      
-		collectors = get_collectors(targets)
-
-		# Task the in scope collectors                                                                   
+                # Query the repository for in scope collectors
+                collectors = get_collectors(targets)
+                
+		# Task the in scope collectors
                 task_collectors(iam, targets, collectors)
             else:    
                 # Store the initiate assessment request in the repository 

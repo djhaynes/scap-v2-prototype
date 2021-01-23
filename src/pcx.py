@@ -61,7 +61,7 @@ EVENT_ASSESSMENT_RESULTS_TOPIC = "/scap/event/assessment/results"
 EVENT_STORE_DATA_TOPIC = "/scap/event/data/store"
 
 # Create DXL configuration from file
-config = DxlClientConfig.create_dxl_config_from_file(CONFIG_FILE)
+config = DxlClientConfig.create_dxl_config_from_file(CONFIG)
 
 # Stores all incoming collection requests that
 # need to be processed
@@ -163,8 +163,8 @@ with DxlClient(config) as client:
     def get_pce_ids(collection_methods):
         cms = json.loads(collection_methods)
         pce_ids = []
-	for cm in cms:
-	    pce_ids.append(cm["pce-id"])
+        for cm in cms:
+            pce_ids.append(cm["pce-id"])
         return pce_ids
     
     # Query the repository for certain information                                                                 
@@ -183,7 +183,7 @@ with DxlClient(config) as client:
     # Compute the target identifier based on the collected
     # asset information
     def get_target_id(asset_info):
-        info = bytes(asset_info)
+        info = json.dumps(asset_info).encode("UTF-8")
         hash_object = hashlib.md5(info)
         return hash_object.hexdigest()
         
@@ -194,7 +194,7 @@ with DxlClient(config) as client:
     
     # Store data in the repository
     def store_data(m):
-	logger.info("Storing data in the repository: %s", m.to_s())
+        logger.info("Storing data in the repository: %s", m.to_s())
         send_event(EVENT_STORE_DATA_TOPIC, m.to_json())
         
     # Send event to the specified topic                                                                  
@@ -209,7 +209,7 @@ with DxlClient(config) as client:
 
     # Apply format and filters to report results                                                                   
     def	apply_format_and_filters(rrsm, result_format_filters):
-	return rrsm
+        return rrsm
             
     # Process incoming collection request events                                                            
     class CollectionEventCallback(EventCallback):
@@ -268,7 +268,7 @@ with DxlClient(config) as client:
             for target in crm.targets: 
                 pce_ids = get_pces(target)
                 for pce_id in pce_ids:
-		    task_pce(crm, pce_id)
+                    task_pce(crm, pce_id)
             
         time.sleep(1)
             
