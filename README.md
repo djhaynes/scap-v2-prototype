@@ -36,7 +36,7 @@ First, check the OpenSSL version used by Python.
 
 Then, type the following.
 
-`>>> import ssl`
+`>>> import ssl`<br>
 `>>> ssl.OPENSSL_VERSION`
 
 Once the OpenSSL version is verified, type the following.
