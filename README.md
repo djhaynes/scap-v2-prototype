@@ -17,7 +17,7 @@ The following commands were used to install and run the OpenDXL Broker. These in
 Assuming you are in the /home/user directory, run the following commands.
 
 `mkdir opendxl`<br>
- `mkdir opendxl\opendxl-broker`
+ `mkdir opendxl/opendxl-broker`
 
 Next, run OpenDXL with the following command. 
 
