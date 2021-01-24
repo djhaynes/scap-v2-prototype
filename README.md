@@ -1,8 +1,8 @@
 # scap-v2-prototype
-This prototype implements the components and basic message flows for the SCAP v2 Architecture which is defined [here](https://groups.google.com/a/list.nist.gov/group/scap-dev-endpoint/attach/875891ab9f4df/SCAP%20v2%20Data%20Collection%20Architecture%2020200818.docx?part=0.1).
+The SCAP v2 Prototype implements the components and basic message flows for the SCAP v2 Architecture which is defined [here](https://groups.google.com/a/list.nist.gov/group/scap-dev-endpoint/attach/875891ab9f4df/SCAP%20v2%20Data%20Collection%20Architecture%2020200818.docx?part=0.1).
 
 ## Build Instructions
-The following provides instructions on how to set up the SCAP v2 prototype on Ubuntu 20.04.
+The following provides instructions on how to set up the SCAP v2 Prototype on Ubuntu 20.04.
 
 ### Install Docker
 Docker can be installed using the instructions found [here](https://docs.docker.com/engine/install/ubuntu/). Docker may be installed on other operating systems by following the instructions found [here](https://docs.docker.com/get-docker/).
@@ -12,14 +12,12 @@ The [OpenDXL Broker](https://hub.docker.com/r/opendxl/opendxl-broker/) Docker im
 
 `sudo docker pull opendxl/opendxl-broker`
 
-The following commands were used to install and run the OpenDXL Broker. These instructions were based on the instructions found [here](https://github.com/opendxl/opendxl-broker/wiki/Command-Line-OpenDXL-Broker-Installation).
-
-Assuming you are in a user home directory (e.g., /home/dhaynes), run the following commands.
+Next, prepare the directory structure for the OpenDXL Broker. Assuming you are in a user home directory (e.g., /home/dhaynes), run the following commands. These commands are based on the instructions found [here](https://github.com/opendxl/opendxl-broker/wiki/Command-Line-OpenDXL-Broker-Installation).
 
 `mkdir opendxl`<br>
 `mkdir opendxl/opendxl-broker`
 
-Next, run OpenDXL with the following command. 
+Next, run OpenDXL with the following command. The -v argument should point to the directory structure created in the previous step. 
 
 `sudo docker run -d --name opendxl-broker -p 8443:8443 -p 8883:8883 -v /home/dhaynes/opendxl/opendxl-broker:/dxlbroker-volume opendxl/opendxl-broker`
 
@@ -51,7 +49,7 @@ Then, the OpenDXL client library can be installed using the following command.
 
 `pip3 install dxlclient`
 
-Once installed, provision the OpenDXL client by running the following command. This will create files needed by the OpenDXL client to connect to the OpenDXL broker in the /home/user/opendxl/opendxl-client directory. You will have to enter the OpenDXL broker username (admin) and password (password).
+Once installed, provision the OpenDXL client by running the following command. This will create files needed by the OpenDXL client to connect to the OpenDXL broker in the /home/dhaynes/opendxl/opendxl-client directory. You will have to enter the OpenDXL broker username (admin) and password (password).
 
 `python3 -m dxlclient provisionconfig /home/dhaynes/opendxl/opendxl-client 127.0.0.1 opendxl-client`
 
