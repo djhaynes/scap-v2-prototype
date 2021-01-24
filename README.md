@@ -41,7 +41,7 @@ Then, type the following.
 
 Once the OpenSSL version is verified, type the following.
 
-`quit()`
+`>>> quit()`
 
 Next, install pip.
 
