@@ -53,7 +53,7 @@ Then, the OpenDXL client library can be installed using the following command.
 
 Once installed, provision the OpenDXL client by running the following command. This will create files needed by the OpenDXL client to connect to the OpenDXL broker in the /home/user/opendxl/opendxl-client directory.
 
-`python -m dxlclient provisionconfig /home/dhaynes/opendxl/opendxl-client 127.0.0.1 opendxl-client`
+`python3 -m dxlclient provisionconfig /home/dhaynes/opendxl/opendxl-client 127.0.0.1 opendxl-client`
 
 ### Get the SCAP v2 Prototype
 Retrieve the SCAP v2 Prototype by running the following command. 
