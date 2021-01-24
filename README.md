@@ -51,7 +51,7 @@ Then, the OpenDXL client library can be installed using the following command.
 
 `pip3 install dxlclient`
 
-Once installed, provision the OpenDXL client by running the following command. This will create files needed by the OpenDXL client to connect to the OpenDXL broker in the /home/user/opendxl/opendxl-client directory.
+Once installed, provision the OpenDXL client by running the following command. This will create files needed by the OpenDXL client to connect to the OpenDXL broker in the /home/user/opendxl/opendxl-client directory. You will have to enter the OpenDXL broker username (admin) and password (password).
 
 `python3 -m dxlclient provisionconfig /home/dhaynes/opendxl/opendxl-client 127.0.0.1 opendxl-client`
 
