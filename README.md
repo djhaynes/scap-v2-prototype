@@ -14,14 +14,14 @@ The [OpenDXL Broker](https://hub.docker.com/r/opendxl/opendxl-broker/) Docker im
 
 The following commands were used to install and run the OpenDXL Broker. These instructions were based on the instructions found [here](https://github.com/opendxl/opendxl-broker/wiki/Command-Line-OpenDXL-Broker-Installation).
 
-Assuming you are in the /home/user directory, run the following commands.
+Assuming you are in a user home directory (e.g., /home/dhaynes), run the following commands.
 
 `mkdir opendxl`<br>
 `mkdir opendxl/opendxl-broker`
 
 Next, run OpenDXL with the following command. 
 
-`sudo docker run -d --name opendxl-broker -p 8443:8443 -p 8883:8883 -v /home/user/opendxl/opendxl-broker:/dxlbroker-volume opendxl/opendxl-broker`
+`sudo docker run -d --name opendxl-broker -p 8443:8443 -p 8883:8883 -v /home/dhaynes/opendxl/opendxl-broker:/dxlbroker-volume opendxl/opendxl-broker`
 
 Check to see that the OpenDXL Docker image is running using the following command.
 
@@ -53,7 +53,7 @@ Then, the OpenDXL client library can be installed using the following command.
 
 Once installed, provision the OpenDXL client by running the following command. This will create files needed by the OpenDXL client to connect to the OpenDXL broker in the /home/user/opendxl/opendxl-client directory.
 
-`python -m dxlclient provisionconfig /home/user/opendxl/opendxl-client 127.0.0.1 opendxl-client`
+`python -m dxlclient provisionconfig /home/dhaynes/opendxl/opendxl-client 127.0.0.1 opendxl-client`
 
 ### Get the SCAP v2 Prototype
 Retrieve the SCAP v2 Prototype by running the following command. 
@@ -62,7 +62,7 @@ Retrieve the SCAP v2 Prototype by running the following command.
 
 Then, configure scap-v2-prototype/src/common.py to point to the files created above.
 
-`CONFIG = "/home/user/opendxl/opendxl-client/dxlclient.config"`
+`CONFIG = "/home/dhaynes/opendxl/opendxl-client/dxlclient.config"`
 
 Now, the individual components of the SCAP v2 Architecture can be started from the scap-v2-prototype/src directory.
 
