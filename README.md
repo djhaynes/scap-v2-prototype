@@ -37,7 +37,7 @@ Then, type the following.
 `>>> import ssl`<br>
 `>>> ssl.OPENSSL_VERSION`
 
-Once the OpenSSL version is verified, type the following.
+Once the OpenSSL version is verified (1.0.1 or greater), type the following.
 
 `>>> quit()`
 
